@@ -1,0 +1,80 @@
+﻿@model Model.Entity.PRODUCT
+
+@{
+    ViewBag.Title = "DeleteBook";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutadmin.cshtml";
+}
+
+<div class="text-center"><h2>Xóa sản phẩm</h2></div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPRODUCTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPRODUCTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCATEGORIES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCATEGORIES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VENDOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VENDOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTS_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTS_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMAGE_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMAGE_NAME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+
+        </div>
+    }
+</div>
+<i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,125 @@
+﻿@model PagedList.IPagedList<Model.Entity.PRODUCT>
+@*@model IEnumerable<Model.Entity.PRODUCT>*@
+@using PagedList.Mvc
+@using MCShop_WebApp.Models
+@using Model.Entity;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    if (Session["ShoppingCart"] != null)
+    {
+        int cartcount = 0;
+        List<CartItem> ls = (List<CartItem>)Session["ShoppingCart"];
+        foreach (CartItem item in ls)
+        {
+            cartcount += item.Quantity;
+        }
+        ViewBag.count = cartcount;
+    }
+}
+
+<script>
+    function AddToCart(IDPRODUCTS) {
+        $.ajax({
+            type: 'POST', url: '/Cart/AddToCart', data: { id: IDPRODUCTS }, success: function (data) {
+                $("#Cart_Amount").html(data.ItemAmount);
+            }
+        });
+    }
+</script>
+@RenderPage("~/Views/Shared/_Navigation.cshtml")
+<div class="row ">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-lg-3 col my-3">
+            <div class="card card-ecommerce">
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img style="margin: 1em auto" src="@Url.Content("~/Content/Image/" + item.IMAGE_NAME)" />
+
+                    <a href=@Url.Action("Details", "Book", new { id = item.IDPRODUCTS } )>
+                        <div class="mask rgba-white-slight"></div>
+
+                    </a>
+                </div>
+                <!-- Card image -->
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Category & Title -->
+                    <h5 class="card-title mb-1 tensp">
+                        <strong>
+                            @Html.DisplayFor(modelItem => item.PRODUCTS_NAME, new { @class = "dark" })
+                        </strong>
+                    </h5>
+                    <span class="badge grey mb-2 text-center">best sale</span>
+                    <!-- Rating -->
+                    <ul class="rating">
+
+                        <li><i class="fas fa-star blue-text"></i></li>
+
+                        <li><i class="fas fa-star blue-text"></i></li>
+
+                        <li><i class="fas fa-star blue-text"></i></li>
+
+                        <li><i class="fas fa-star blue-text"></i></li>
+
+                        <li><i class="fas fa-star blue-text"></i></li>
+
+                    </ul>
+                    <!-- Card footer -->
+                    <div class="card-footer pb-0">
+                        <div class="row mb-0">
+                            <!-- Rating -->
+                            @*<ul class="rating col-12 col-lg-12 col-md-12">
+                                <li>
+                                    <i class="fas fa-star blue-text"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star blue-text"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star blue-text"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star blue-text"></i>
+                                </li>*@
+                            @*</ul>*@
+
+                            @*<span class="col-12 col-md-6 col-lg-6 gia text-right"><strong>{{sp.gia}}</strong></span> <span class="gia text-left col-12 col-md-6 col-lg-6"><s>{{sp.giacu}}</s></span>*@
+
+                            <h5 class="mb-0 pb-0 mt-1 font-weight-bold">
+                                <span class="red-text"><strong><strong>@(Convert.ToDecimal(item.PRICE).ToString("#,##0")) vnđ</strong></strong></span>
+
+                                <span class="grey-text"><small><s> <strong>@(Convert.ToDecimal(item.OLDPRICE).ToString("#,##0")) đ</strong></s></small></span>
+
+                            </h5>
+                            <span style="position:absolute; right: 2em; color:white">
+                                @*<input type="submit" class="btn btn-sm btn-warning" onclick="AddToCart('@item.IDPRODUCTS')" value="Mua hàng" />*@
+
+
+                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart" onclick="AddToCart('@item.IDPRODUCTS')">
+                                    <i class="fas fa-shopping-cart ml-3"></i>
+                                </a>
+
+                            </span>
+                            <!--<div class="text-center col-12 col-lg-12 col-md-12">
+                            <a>-->
+                            @*<div class="btn btn-info mb-1 btn-sm waves-effect mx-auto"><span stS })
+                                </a>yle="font-size: 1em;">Detail</span></div>*@
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Card content -->
+            </div>
+
+        </div>
+
+    }
+
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))
+

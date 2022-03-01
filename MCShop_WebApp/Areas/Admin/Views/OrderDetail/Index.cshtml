@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Model.Entity.ORDER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutadmin.cshtml";
+}
+
+<div class="text-center"><h2>Tất cả đơn hàng</h2></div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SHIPNAME)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SHIPNAME)
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.PHONE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ADDRESS)
+    </td>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.STATUS)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IDORDERS }) |
+        @Html.ActionLink("Details", "Details", new { id = item.IDORDERS }) |
+        @Html.ActionLink("Delete", "DeleteOrder", new { id = item.IDORDERS })
+    </td>
+</tr>
+}
+
+</table>

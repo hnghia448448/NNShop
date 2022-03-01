@@ -1,0 +1,86 @@
+﻿@model Model.Entity.ACCOUNT
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/fonts/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/Assest/user/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="~/Assest/user/css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="~/Assest/user/css/style.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="panel-body">
+
+            @ViewBag.TB
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                <fieldset>
+
+                    <div class="" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Đăng nhập</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="md-form mb-5">
+                                        <i class="fas fa-envelope prefix grey-text"></i>
+                                        @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control", @autofocus = "autofocus", @id = "defaultForm-email" })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                        <label data-error="wrong" data-success="right" for="defaultForm-email">Tài khoản</label>
+                                    </div>
+
+                                    <div class="md-form mb-4 ">
+                                        <i class="fas fa-lock prefix grey-text"></i>
+                                        @Html.TextBoxFor(model => model.PASSWORD, new { @class = "form-control", @type = "password", @id = "defaultForm-pass" })
+                                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+
+                                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Mật khẩu</label>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button class="btn btn-deep-orange" type="submit">Đăng nhập</button>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    Chưa có tài khoản <a href="~/Admin/User/Register">Đăng ký tại đây</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Assest/user/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="~/Assest/user/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="~/Assest/user/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="~/Assest/user/js/mdb.min.js"></script>
+</body>
+</html>

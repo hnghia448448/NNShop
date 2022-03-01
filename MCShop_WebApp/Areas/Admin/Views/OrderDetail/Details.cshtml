@@ -1,0 +1,171 @@
+﻿@model Model.Dao.OrderdetailInOrder
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutadmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderdetailInOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDORDERS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDORDERS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_ACCOUNTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_ACCOUNTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SHIPNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SHIPNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PRODUCT_ORDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PRODUCT_ORDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPRODUCTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPRODUCTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QUANTITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUANTITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCATEGORIES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCATEGORIES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VENDOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VENDOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTS_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTS_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMAGE_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMAGE_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OLDPRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OLDPRICE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

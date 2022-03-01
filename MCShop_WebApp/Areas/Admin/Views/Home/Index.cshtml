@@ -1,0 +1,61 @@
+﻿@*@model IEnumerable<Model.Entity.PRODUCT>*@
+@model PagedList.IPagedList<Model.Entity.PRODUCT>
+@using PagedList.Mvc
+@using MCShop_WebApp.Models
+@using Model.Entity;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutadmin.cshtml";
+}
+<p>
+    <button class="btn btn-deep-purple-accent">@Html.ActionLink("Thêm sách mới", "CreateBook")</button>
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            <label class="label-default">Tên sách</label>
+        </th>
+        <th>
+            <label  class="label-default">Nhà cung cấp</label>
+        </th>
+        <th>
+            <label  class="label">Giá mới</label>
+        </th>
+
+
+        <th>
+            <label  class="label-default">Hình ảnh</label>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCTS_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VENDOR)
+            </td>
+            <td>
+                <strong>@(Convert.ToDecimal(item.PRICE).ToString("#,##0")) đ</strong>
+            </td>
+
+
+            <td>
+                <img src="@Url.Content("~/Content/Image/"+item.IMAGE_NAME)" style="width:20%" />
+            </td>
+            <td>
+                <button class="btn btn-amber">  @Html.ActionLink("Edit", "EditBook", new { id = item.IDPRODUCTS })</button> 
+                <button class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteBook", new { id = item.IDPRODUCTS })</button> 
+            </td>
+        </tr>
+    }
+
+</table>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))
+

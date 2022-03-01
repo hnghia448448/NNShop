@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Model.Entity.ACCOUNT>
+
+@{
+    ViewBag.Title = "EditBook";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutadmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>getListAccount</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.USERNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.PERMISSION)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.USERNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.PERMISSION)
+            </td>
+            <td>
+                <button class="btn btn-amber">  @Html.ActionLink("Edit", "Edit", new { id = item.ID_ACCOUNTS })</button>
+                <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.ID_ACCOUNTS })</button>
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
